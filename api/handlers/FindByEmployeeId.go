@@ -2,6 +2,7 @@ package handlers
 
 import (
 	"github.com/django-jane/EmployeeManager/models"
+	"github.com/django-jane/EmployeeManager/models/Employees"
 	"github.com/gin-gonic/gin"
 	log "github.com/sirupsen/logrus"
 	"go.elastic.co/apm"
@@ -20,16 +21,17 @@ func(handler *Handler)FindByID(context *gin.Context){
 	defer span.End()
 
 	log.WithFields(log.Fields{
-		"id":objectID,
-	}).Info("ID in request is")
 
-	employee := &models.Employee{}
+		"id":obj,
+	}).Info("Find employee with")
 
-	if err := context.BindQuery(&employee);err !=nil{
+	employee := Employees.EmployeeViaID{}
+
+	if err := context.ShouldBind(&employee);err !=nil{
 		handler.response.Successful=false
 		handler.response.ErrorMessages = append(handler.response.ErrorMessages,
 												err.Error())
-		handler.response.Code = 500
+		handler.response.Code = 501
 		handler.response.Dispatch(context)
 		return
 	}
@@ -40,7 +42,7 @@ func(handler *Handler)FindByID(context *gin.Context){
 			handler.response.Successful=false
 			handler.response.ErrorMessages = append(handler.response.ErrorMessages,
 														err.Error())
-			handler.response.Code = 500
+			handler.response.Code = 502
 
 			handler.response.Dispatch(context)
 

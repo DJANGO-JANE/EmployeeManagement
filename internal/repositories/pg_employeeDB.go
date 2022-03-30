@@ -133,7 +133,7 @@ func (p pgEmployeeRepository) SignUpNew(context context.Context, employee *model
 }
 
 func (p pgEmployeeRepository) FindById(context context.Context, employeeId string) (*models.Employee, error) {
-		sqlStatement :=`SELECT * FROM employees WHERE Id=$1`
+		sqlStatement :=`SELECT * FROM employees WHERE Id = $1`
 
 		var employee models.Employee
 
