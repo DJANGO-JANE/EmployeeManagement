@@ -13,7 +13,6 @@ require (
 	github.com/swaggo/gin-swagger v1.4.1
 	go.elastic.co/apm v1.15.0
 	go.elastic.co/apm/module/apmgin v1.15.0
-	go.uber.org/zap v1.21.0
 )
 
 require (

@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"github.com/jmoiron/sqlx"
 	"github.com/joho/godotenv"
-	_ "github.com/lib/pq" //postgres drivers for initialization
+	_ "github.com/lib/pq" //postgres drivers for initialisation
 	"go.uber.org/zap"
 	"os"
 )

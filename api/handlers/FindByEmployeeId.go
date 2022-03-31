@@ -10,7 +10,7 @@ import (
 
 
 
-func(handler *Handler)FindByID(context *gin.Context){
+func(handler *Handler)FindEmployeeByID(context *gin.Context){
 	span, ctx := apm.StartSpan(context.Request.Context(),
 							"FindEmployeeByIDHandler",
 							"request")

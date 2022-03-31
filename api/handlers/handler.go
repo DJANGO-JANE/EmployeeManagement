@@ -35,9 +35,9 @@ func NewHandler(config *Config) {
 	fmt.Sprintf("Base url is %s",temp)
 
 	group.GET("/All-Employee",handler.RetrieveAllEmployees)
-	group.GET("/Find-Employee/:id",handler.FindByID)
 	group.POST("/Register-Employee",handler.RegisterEmployee)
 	group.PUT("/Update-Employee/:id",handler.UpdateEmployee)
+	group.GET("/Find-Employee/:id",handler.FindEmployeeByID)//
 	group.DELETE("/Delete-Employee/:id",handler.DeleteEmployee)
 
 	url := ginSwagger.URL("http://localhost:8090/api/profiler/swagger/doc.json")
