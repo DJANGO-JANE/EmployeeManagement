@@ -24,7 +24,14 @@ func main() {
 	//If there was no error in connecting to the database
 	//Then proceed to inject the dependencies
 	router, err := persistence.Inject(data)
-	log.Info("Dependencies successfully injected")
+	if err != nil {
+		log.WithFields(log.Fields{
+			"Error": err,
+		}).Info("Dependency injection failed")
+
+	} else {
+		log.Info("Dependencies successfully injected")
+	}
 
 	port := os.Getenv("EMPLOYEE_MAN_PORT")
 
@@ -41,6 +48,7 @@ func main() {
 		log.WithFields(log.Fields{
 			"server": server,
 			"port":   port,
+			"error":  err,
 		}).Info("Tried to open server but failed to open")
 	}
 
